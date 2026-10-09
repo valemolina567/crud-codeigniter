@@ -1,5 +1,9 @@
 # CRUD de Personas con Login — CodeIgniter 4
 
+## Video YouTube
+
+https://youtu.be/T1rAPfdlSPw
+
 ## 1. Descripción del proyecto
 
 Esta aplicación web permite gestionar un registro de personas mediante las operaciones CRUD (Crear, Leer, Actualizar y Eliminar). Fue desarrollada con **CodeIgniter 4**, utilizando el patrón arquitectónico **MVC (Modelo-Vista-Controlador)** y una base de datos MySQL.
