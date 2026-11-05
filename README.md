@@ -300,3 +300,5 @@ Proyecto acadÃ©mico desarrollado para aplicar los conceptos de desarrollo web co
 **Framework utilizado:** CodeIgniter 4.
 
 **Base de datos:** MySQL.
+
+> Guía de despliegue en Render + Aiven: ver [DEPLOY.md](DEPLOY.md).

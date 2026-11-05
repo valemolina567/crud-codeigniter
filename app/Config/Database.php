@@ -194,6 +194,12 @@ class Database extends Config
     {
         parent::__construct();
 
+        // Bases de datos en la nube (p. ej. Aiven) exigen conexión SSL.
+        // Se activa solo si la variable de entorno DB_SSL=1 (en local no hace falta).
+        if (($_SERVER['DB_SSL'] ?? $_ENV['DB_SSL'] ?? getenv('DB_SSL')) === '1') {
+            $this->default['encrypt'] = ['ssl_verify' => false];
+        }
+
         // Ensure that we always set the database group to 'tests' if
         // we are currently running an automated test suite, so that
         // we don't overwrite live data on accident.
