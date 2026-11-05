@@ -240,7 +240,60 @@ Las siguientes comprobaciones permiten verificar el funcionamiento de la aplicac
 * Carga y actualización de imágenes.
 * Cierre de sesión y comprobación de las rutas protegidas.
 
-## 10. Autoría
+## 10. Módulo de administración (Tarea 8)
+
+Panel exclusivo para el rol **ADMIN** que alimenta el Core «Perfil de afinidad JoJo» del documento de especificación funcional: partes, personajes, géneros, anime y el cuestionario del test con sus pesos.
+
+### 10.1 Qué se administra
+
+| Módulo | Ruta | Qué hace |
+|---|---|---|
+| Inicio | `/admin` | Contadores y orden recomendado de carga |
+| Partes | `/admin/partes` | CRUD de las partes de la saga |
+| Personajes | `/admin/personajes` | CRUD de personajes con imagen; cada uno pertenece a una parte (dropdown) |
+| Géneros | `/admin/generos` | CRUD de géneros |
+| Anime | `/admin/animes` | CRUD de anime y su relación N:M con géneros (casillas de selección) |
+| Test | `/admin/preguntas` | CRUD de preguntas, opciones y **pesos 0-3** hacia personajes y géneros |
+
+### 10.2 Seguridad y validaciones en back-end
+
+- **Autenticación + autorización por rol:** el grupo `/admin` usa los filtros `auth` (sesión), `admin` (rol `ADMIN`, si no responde 403) y `csrf` (token en todos los POST). Las acciones destructivas usan POST, no enlaces GET.
+- **Validación de datos sensibles en el servidor** (nunca solo con JS):
+  - Peso de una opción: `in_list[0,1,2,3]` (alimenta las fórmulas de compatibilidad).
+  - Calificación del anime: numérica entre 0 y 10 (desempata las recomendaciones).
+  - Nombre de género y número de parte: únicos (`is_unique`).
+  - Imágenes: `is_image`, `mime_in` (JPG/PNG/WEBP) y `max_size` de 2 MB, con nombre aleatorio.
+  - Regla de negocio: una pregunta solo puede activarse con al menos 2 opciones y pesos de personajes en cada opción; si deja de cumplirse, se desactiva sola.
+- **Claves foráneas sin inputs manuales:** todas se eligen en desplegables o casillas y, además, el servidor comprueba con `is_not_unique[tabla.id]` que existan.
+- **Dropdown dependiente Parte → Personaje:** al asignar pesos, el segundo desplegable se llena por AJAX (`GET /admin/api/partes/{id}/personajes`, devuelve JSON). El servidor vuelve a comprobar que el personaje pertenezca a la parte elegida.
+
+### 10.3 Puesta en marcha del módulo
+
+```bash
+# 1. Actualizar dependencias y código
+git pull
+composer install
+
+# 2. Crear las tablas nuevas y agregar la columna "rol" a usuarios
+php spark migrate
+
+# 3. (Opcional) Datos de ejemplo: 8 partes, 7 géneros y 6 personajes
+php spark db:seed CoreSeeder
+
+# 4. Iniciar el servidor
+php spark serve
+```
+
+La migración convierte automáticamente al usuario `admin` creado en el paso 5 en administrador. Cualquier otro usuario tiene rol `USER` y recibe un 403 al entrar a `/admin`. Para volver atrás: `php spark migrate:rollback`.
+
+Nota: `animes.rating` se define como `DECIMAL(4,2)` (y no `(3,2)`) para poder guardar la calificación 10.00.
+
+### 10.4 Despliegue (Render)
+
+1. Hacer `git push` a la rama principal; Render redespliega automáticamente.
+2. Ejecutar las migraciones contra la base de datos de producción (`php spark migrate`).
+3. Comprobar que las carpetas `public/uploads/personajes` y `public/uploads/animes` existan y sean escribibles. En Render el disco es efímero: las imágenes subidas se pierden en cada despliegue, a menos que se use un disco persistente.
+## 11. Autoría
 
 Proyecto académico desarrollado para aplicar los conceptos de desarrollo web con el patrón MVC, operaciones CRUD, autenticación y conexión con una base de datos relacional.
 

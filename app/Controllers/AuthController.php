@@ -45,8 +45,14 @@ class AuthController extends BaseController
         session()->set([
             'isLoggedIn' => true,
             'userId' => $usuarioEncontrado['id'],
-            'usuario' => $usuarioEncontrado['usuario']
+            'usuario' => $usuarioEncontrado['usuario'],
+            'rol' => $usuarioEncontrado['rol'] ?? 'USER'
         ]);
+
+        // Los administradores entran al panel; el resto al listado de personas
+        if (($usuarioEncontrado['rol'] ?? 'USER') === 'ADMIN') {
+            return redirect()->to('/admin');
+        }
 
         return redirect()->to('/personas');
     }

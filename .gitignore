@@ -16,3 +16,29 @@ application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
 /vendor/
+
+
+# CodeIgniter 4: configuración local y credenciales
+.env
+.env.*
+
+# Dependencias de Composer
+/vendor/
+
+# Sesiones, caché y registros
+/writable/session/*
+!/writable/session/index.html
+/writable/cache/*
+!/writable/cache/index.html
+/writable/logs/*
+!/writable/logs/index.html
+
+# Imágenes cargadas durante las pruebas
+/public/uploads/personas/*
+!/public/uploads/personas/index.html
+
+# Archivos temporales del editor y sistema
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
