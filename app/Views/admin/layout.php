@@ -17,8 +17,10 @@
             <a href="<?= base_url('admin/generos') ?>">Géneros</a>
             <a href="<?= base_url('admin/animes') ?>">Anime</a>
             <a href="<?= base_url('admin/preguntas') ?>">Test</a>
+            <a href="<?= base_url('admin/usuarios') ?>">Usuarios</a>
+        <?php else: ?>
+            <a href="<?= base_url('personas') ?>">Personas</a>
         <?php endif; ?>
-        <a href="<?= base_url('personas') ?>">CRUD Personas</a>
         <span class="derecha">
             <?= esc(session()->get('usuario')) ?> ·
             <a href="<?= base_url('logout') ?>" style="padding:0">Cerrar sesión</a>

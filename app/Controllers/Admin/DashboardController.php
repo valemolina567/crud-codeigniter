@@ -17,6 +17,7 @@ class DashboardController extends AdminBaseController
                 'Anime'               => $db->table('animes')->countAllResults(),
                 'Preguntas del test'  => $db->table('quiz_questions')->countAllResults(),
                 'Preguntas activas'   => $db->table('quiz_questions')->where('is_active', 1)->countAllResults(),
+                'Usuarios'            => $db->table('usuarios')->countAllResults(),
             ],
         ];
 

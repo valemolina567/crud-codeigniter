@@ -3,7 +3,7 @@
 use CodeIgniter\Router\RouteCollection;
 
 /** @var RouteCollection $routes */
-$routes->addRedirect('/', 'login');
+$routes->get('/', 'Home::index');
 
 // Login: rutas públicas
 $routes->get('/login', 'AuthController::login');
@@ -88,4 +88,12 @@ $routes->group('admin', [
     $routes->post('opciones/(:num)/pesos-personaje/(:num)/eliminar', 'PesoController::eliminarPersonaje/$1/$2');
     $routes->post('opciones/(:num)/pesos-genero', 'PesoController::guardarGenero/$1');
     $routes->post('opciones/(:num)/pesos-genero/(:num)/eliminar', 'PesoController::eliminarGenero/$1/$2');
+
+    // Usuarios del sistema
+    $routes->get('usuarios', 'UsuarioController::index');
+    $routes->get('usuarios/nuevo', 'UsuarioController::nuevo');
+    $routes->post('usuarios', 'UsuarioController::guardar');
+    $routes->get('usuarios/(:num)/editar', 'UsuarioController::editar/$1');
+    $routes->post('usuarios/(:num)', 'UsuarioController::actualizar/$1');
+    $routes->post('usuarios/(:num)/eliminar', 'UsuarioController::eliminar/$1');
 });
