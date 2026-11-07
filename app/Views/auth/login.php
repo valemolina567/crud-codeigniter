@@ -82,6 +82,7 @@
             text-align: center;
         }
     </style>
+    <link rel="stylesheet" href="<?= base_url('css/jojo-theme.css') ?>">
 </head>
 
 <body>
