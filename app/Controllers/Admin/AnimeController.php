@@ -87,13 +87,27 @@ class AnimeController extends AdminBaseController
 
     public function index()
     {
-        $animes = db_connect()->table('animes a')
-            ->select('a.*, GROUP_CONCAT(g.name ORDER BY g.name SEPARATOR ", ") AS generos', false)
-            ->join('anime_genres ag', 'ag.anime_id = a.id', 'left')
-            ->join('genres g', 'g.id = ag.genre_id', 'left')
-            ->groupBy('a.id')
-            ->orderBy('a.title')
+        $db     = db_connect();
+        $animes = $db->table('animes')->orderBy('title')->get()->getResultArray();
+
+        // Géneros de cada anime (consulta simple, compatible con cualquier configuración de MySQL)
+        $filas = $db->table('anime_genres ag')
+            ->select('ag.anime_id, g.name')
+            ->join('genres g', 'g.id = ag.genre_id')
+            ->orderBy('g.name')
             ->get()->getResultArray();
+
+        $generosPorAnime = [];
+        foreach ($filas as $fila) {
+            $generosPorAnime[$fila['anime_id']][] = $fila['name'];
+        }
+
+        foreach ($animes as &$anime) {
+            $anime['generos'] = isset($generosPorAnime[$anime['id']])
+                ? implode(', ', $generosPorAnime[$anime['id']])
+                : null;
+        }
+        unset($anime);
 
         return view('admin/animes/index', ['titulo' => 'Catálogo de anime', 'animes' => $animes]);
     }
