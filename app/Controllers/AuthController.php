@@ -10,7 +10,7 @@ class AuthController extends BaseController
     public function login()
     {
         if (session()->get('isLoggedIn')) {
-            return redirect()->to('/personas');
+            return redirect()->to('/bienvenida');
         }
 
         return view('auth/login');
@@ -49,12 +49,12 @@ class AuthController extends BaseController
             'rol' => $usuarioEncontrado['rol'] ?? 'USER'
         ]);
 
-        // Los administradores entran al panel; el resto al listado de personas
+        // Los administradores entran al panel; los demás usuarios a la página de bienvenida
         if (($usuarioEncontrado['rol'] ?? 'USER') === 'ADMIN') {
             return redirect()->to('/admin');
         }
 
-        return redirect()->to('/personas');
+        return redirect()->to('/bienvenida');
     }
 
     // Cerrar sesión

@@ -20,7 +20,7 @@ WORKDIR /var/www/html
 COPY . .
 RUN composer install --no-dev --optimize-autoloader --no-interaction \
     && mkdir -p writable/cache writable/logs writable/session writable/uploads \
-        public/uploads/personas public/uploads/personajes public/uploads/animes \
+        public/uploads/personajes public/uploads/animes \
     && chown -R www-data:www-data writable public/uploads
 
 COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh

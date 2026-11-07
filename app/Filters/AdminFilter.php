@@ -17,7 +17,7 @@ class AdminFilter implements FilterInterface
         if (session()->get('rol') !== 'ADMIN') {
             return service('response')
                 ->setStatusCode(403)
-                ->setBody('<h1>403 - Acceso denegado</h1><p>Esta sección es solo para administradores.</p><p><a href="/personas">Volver</a></p>');
+                ->setBody('<h1>403 - Acceso denegado</h1><p>Esta sección es solo para administradores.</p><p><a href="/bienvenida">Volver</a></p>');
         }
 
         return null;

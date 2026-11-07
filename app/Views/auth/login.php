@@ -88,7 +88,7 @@
 <body>
     <div class="login">
         <h1>Bienvenido</h1>
-        <p>Ingresa para administrar las personas.</p>
+        <p>Ingresa para continuar.</p>
 
         <?php $mensajeError = session()->getFlashdata('error'); ?>
         <?php if (session()->getFlashdata('error')): ?>

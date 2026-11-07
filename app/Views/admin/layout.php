@@ -19,7 +19,7 @@
             <a href="<?= base_url('admin/preguntas') ?>">Test</a>
             <a href="<?= base_url('admin/usuarios') ?>">Usuarios</a>
         <?php else: ?>
-            <a href="<?= base_url('personas') ?>">Personas</a>
+            <a href="<?= base_url('bienvenida') ?>">Inicio</a>
         <?php endif; ?>
         <span class="derecha">
             <?= esc(session()->get('usuario')) ?> ·
