@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= esc($titulo ?? 'Administración') ?> · JoJo Fandom Hub</title>
+    <title><?= esc($titulo ?? 'JoJo Fandom Hub') ?></title>
     <link rel="stylesheet" href="<?= base_url('css/jojo-theme.css') ?>">
 </head>
 <body>
+    <?php $esAdmin = session()->get('rol') === 'ADMIN'; ?>
     <nav>
-        <span class="marca">JoJo Fandom Hub · Admin</span>
-        <a href="<?= base_url('admin') ?>">Inicio</a>
-        <a href="<?= base_url('admin/partes') ?>">Partes</a>
-        <a href="<?= base_url('admin/personajes') ?>">Personajes</a>
-        <a href="<?= base_url('admin/generos') ?>">Géneros</a>
-        <a href="<?= base_url('admin/animes') ?>">Anime</a>
-        <a href="<?= base_url('admin/preguntas') ?>">Test</a>
+        <span class="marca">JoJo Fandom Hub<?= $esAdmin ? ' · Admin' : '' ?></span>
+        <?php if ($esAdmin): ?>
+            <a href="<?= base_url('admin') ?>">Inicio</a>
+            <a href="<?= base_url('admin/partes') ?>">Partes</a>
+            <a href="<?= base_url('admin/personajes') ?>">Personajes</a>
+            <a href="<?= base_url('admin/generos') ?>">Géneros</a>
+            <a href="<?= base_url('admin/animes') ?>">Anime</a>
+            <a href="<?= base_url('admin/preguntas') ?>">Test</a>
+        <?php endif; ?>
         <a href="<?= base_url('personas') ?>">CRUD Personas</a>
         <span class="derecha">
             <?= esc(session()->get('usuario')) ?> ·

@@ -1,78 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Editar Persona</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 40px;
-        }
-
-        .contenedor {
-            max-width: 600px;
-            margin: auto;
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .campo {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 7px;
-            font-weight: bold;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        .botones {
-            margin-top: 25px;
-        }
-
-        button {
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 10px 18px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #555;
-        }
-
-        .volver {
-            margin-left: 10px;
-            color: #333;
-            text-decoration: none;
-        }
-    </style>
-    <link rel="stylesheet" href="<?= base_url('css/jojo-theme.css') ?>">
-</head>
-
-<body>
+<?= $this->extend('admin/layout') ?>
+<?= $this->section('contenido') ?>
 
 <div class="contenedor">
 
@@ -154,5 +81,4 @@
 
 </div>
 
-</body>
-</html>
+<?= $this->endSection() ?>

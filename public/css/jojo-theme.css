@@ -130,3 +130,13 @@ td.acciones > form { margin-right: 6px; }
 .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; }
 .stat { background: #fffdf7; border: 1px solid var(--linea); border-top: 3px solid var(--oro); border-radius: 10px; padding: 16px; text-align: center; color: var(--texto-suave); }
 .stat strong { display: block; font-family: var(--serif); font-size: 30px; color: var(--morado-700); }
+
+/* ---------- CRUD de personas (vistas antiguas dentro del layout) ---------- */
+.contenedor { padding: 30px; margin-bottom: 22px; }
+.contenedor h1 { text-align: center; margin-bottom: 25px; }
+.contenedor .campo { margin-bottom: 6px; }
+.contenedor .botones { display: flex; gap: 14px; align-items: center; margin-top: 22px; }
+.contenedor button { width: auto; }
+.contenedor .volver { font-weight: bold; text-decoration: none; }
+.contenedor .volver:hover { color: var(--oro); text-decoration: underline; }
+.imagen { width: 70px; height: 70px; object-fit: cover; border-radius: 50%; }
