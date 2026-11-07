@@ -18,6 +18,10 @@
     --texto:      #2a1b3d;
     --texto-suave:#6b5a80;
     --peligro:    #8f1d2c;
+    /* Fondo de página: lila claro (para uno más oscuro, cambia estos tres valores) */
+    --fondo:        #e5daf1;
+    --fondo-claro:  #f5f0fb;
+    --fondo-oscuro: #d3c3e7;
     --serif: Georgia, "Times New Roman", serif;
 }
 
@@ -28,7 +32,7 @@ body {
     min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
     color: var(--texto);
-    background: var(--morado-900) radial-gradient(circle at 50% -10%, #3d2260 0%, var(--morado-900) 55%, var(--morado-950) 100%) fixed;
+    background: var(--fondo) radial-gradient(circle at 50% -10%, var(--fondo-claro) 0%, var(--fondo) 55%, var(--fondo-oscuro) 100%) fixed;
 }
 
 h1, h2 { font-family: var(--serif); color: var(--morado-700); letter-spacing: .2px; }
@@ -53,7 +57,7 @@ main { max-width: 1050px; margin: 28px auto; padding: 0 20px; }
     background: var(--crema);
     border: 1px solid var(--oro);
     border-radius: 12px;
-    box-shadow: 0 6px 24px rgba(0, 0, 0, .35);
+    box-shadow: 0 6px 22px rgba(45, 26, 71, .18);
     color: var(--texto);
 }
 .tarjeta { padding: 26px; margin-bottom: 22px; }
