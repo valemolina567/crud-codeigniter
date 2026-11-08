@@ -7,8 +7,7 @@ Plataforma web para seguidores de la franquicia *JoJo's Bizarre Adventure*. Este
 | Recurso | Enlace |
 |---|---|
 | Aplicación desplegada | https://crud-codeigniter-yixl.onrender.com |
-| Video de la Tarea 8 (administración MVC) | PEGAR_ENLACE_DEL_VIDEO_AQUI |
-| Video del CRUD inicial (tarea anterior) | https://youtu.be/T1rAPfdlSPw |
+| Video | https://youtu.be/6L3kbUTxo0Y |
 
 > El plan gratuito de Render "duerme" el servicio tras un rato sin visitas: la primera carga puede tardar casi un minuto.
 
